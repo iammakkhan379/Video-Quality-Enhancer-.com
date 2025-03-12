@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Quality Enhancer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-video"></i> Video Quality Enhancer</h1>
+            <p class="subtitle">Enhance your videos instantly</p>
+        </header>
+        
+        <main>
+            <div class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & Drop your video here or</p>
+                    <button class="upload-btn">Choose File</button>
+                    <input type="file" id="fileInput" accept="video/*" hidden>
+                </div>
+            </div>
+
+            <div class="video-section hidden" id="videoSection">
+                <div class="video-container">
+                    <video id="videoPreview" controls></video>
+                </div>
+                
+                <div class="enhancement-controls">
+                    <div class="control-group">
+                        <label>Resolution Enhancement:</label>
+                        <select id="resolutionSelect">
+                            <option value="720">720p HD</option>
+                            <option value="1080">1080p Full HD</option>
+                            <option value="1440">1440p QHD</option>
+                            <option value="2160">2160p 4K</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Brightness: <span id="brightnessValue">100%</span></label>
+                        <input type="range" id="brightnessRange" min="0" max="200" value="100">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Contrast: <span id="contrastValue">100%</span></label>
+                        <input type="range" id="contrastRange" min="0" max="200" value="100">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>Saturation: <span id="saturationValue">100%</span></label>
+                        <input type="range" id="saturationRange" min="0" max="200" value="100">
+                    </div>
+
+                    <div class="control-group">
+                        <label>Sharpness: <span id="sharpnessValue">100%</span></label>
+                        <input type="range" id="sharpnessRange" min="0" max="200" value="100">
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="resetBtn" class="reset-btn">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                    <button id="enhanceBtn" class="enhance-btn">
+                        <i class="fas fa-magic"></i> Enhance Video
+                    </button>
+                    <button id="downloadBtn" class="download-btn" disabled>
+                        <i class="fas fa-download"></i> Download Enhanced Video
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div class="loading-overlay hidden" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Enhancing your video...</p>
+            <div class="progress-bar">
+                <div class="progress" id="enhanceProgress"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Video Quality Enhancer - Process videos right in your browser</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
